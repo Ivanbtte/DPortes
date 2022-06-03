@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<%@include file="common/headerInicio.jsp"%> 
+<%@include file="common/headerSesion.jsp"%> 
   <div id="headerwrap">
     <div class="container">
       <div class="row">

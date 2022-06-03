@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.Dportes.entity;
 
 import java.io.Serializable;
@@ -13,6 +16,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -20,8 +24,16 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "articulo")
+@XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Articulo.findAll", query = "SELECT a FROM Articulo a")})
+    @NamedQuery(name = "Articulo.findAll", query = "SELECT a FROM Articulo a"),
+    @NamedQuery(name = "Articulo.findById", query = "SELECT a FROM Articulo a WHERE a.id = :id"),
+    @NamedQuery(name = "Articulo.findByTipo", query = "SELECT a FROM Articulo a WHERE a.tipo = :tipo"),
+    @NamedQuery(name = "Articulo.findByDeporte", query = "SELECT a FROM Articulo a WHERE a.deporte = :deporte"),
+    @NamedQuery(name = "Articulo.findByColor", query = "SELECT a FROM Articulo a WHERE a.color = :color"),
+    @NamedQuery(name = "Articulo.findByEnlace", query = "SELECT a FROM Articulo a WHERE a.enlace = :enlace"),
+    @NamedQuery(name = "Articulo.findByPrecio", query = "SELECT a FROM Articulo a WHERE a.precio = :precio"),
+    @NamedQuery(name = "Articulo.findByTalla", query = "SELECT a FROM Articulo a WHERE a.talla = :talla")})
 public class Articulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,8 +51,10 @@ public class Articulo implements Serializable {
     @Size(max = 20)
     @Column(name = "color")
     private String color;
-    @Column(name = "cantidad")
-    private Integer cantidad;
+    @Size(max = 10485760)
+    @Column(name = "enlace")
+    private String enlace;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "precio")
     private Double precio;
     @Size(max = 10)
@@ -89,12 +103,12 @@ public class Articulo implements Serializable {
         this.color = color;
     }
 
-    public Integer getCantidad() {
-        return cantidad;
+    public String getEnlace() {
+        return enlace;
     }
 
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setEnlace(String enlace) {
+        this.enlace = enlace;
     }
 
     public Double getPrecio() {
