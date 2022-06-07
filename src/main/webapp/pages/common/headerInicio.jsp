@@ -14,13 +14,13 @@
 
   <!-- Bootstrap CSS File -->
   <!-- Latest compiled and minified CSS -->
-  <link rel='stylesheet' href='../webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='${pageContext.request.contextPath}/webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
 
   <!-- Libraries CSS Files -->
-  <link rel='stylesheet' href='../webjars/fontawesome/4.7.0/css/font-awesome.min.css'>
+  <link rel='stylesheet' href='${pageContext.request.contextPath}/webjars/fontawesome/4.7.0/css/font-awesome.min.css'>
 
   <!-- Main Stylesheet File -->
-  <link rel='stylesheet' href='../Resourses/css/PRUEBA.css'>
+  <link rel='stylesheet' href='${pageContext.request.contextPath}/Resourses/css/PRUEBA.css'>
 
   <!-- =======================================================
     Template Name: Instant

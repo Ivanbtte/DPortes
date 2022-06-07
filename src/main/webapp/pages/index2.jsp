@@ -1,65 +1,14 @@
+<%-- 
+    Document   : PRUEBA2
+    Created on : 27 may 2022, 12:08:08
+    Author     : Ivanbtte
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Instant - Bootstrap Personal Template</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <!-- Latest compiled and minified CSS -->
-  <link rel='stylesheet' href='../webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
-
-  <!-- Libraries CSS Files -->
-  <link rel='stylesheet' href='../webjars/fontawesome/4.7.0/css/font-awesome.min.css'>
-
-  <!-- Main Stylesheet File -->
-  <link rel='stylesheet' href='../Resourses/css/PRUEBA.css'>
-
-  <!-- =======================================================
-    Template Name: Instant
-    Template URL: https://templatemag.com/instant-bootstrap-personal-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
-</head>
-
-<body>
-
-  <!-- Static navbar -->
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        <a class="navbar-brand" href="home.html">DPortes</a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="home.html">Home</a></li>
-          <li><a href="about.html">Hombre</a></li>
-          <li><a href="works.html" class="smoothscroll">Mujer</a></li>
-          <li><a href="contact.html" class="smoothscroll">Contactanos</a></li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-  </div>
-
-
+<%@include file="common/headerSesion.jsp"%> 
   <div id="headerwrap">
     <div class="container">
       <div class="row">
@@ -79,22 +28,22 @@
       <h1>My Portfolio</h1>
 
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="works.html"><img src="../images/FUT.jpg" class="img-responsive"></a>
+        <a href="works.html"><img src="${pageContext.request.contextPath}/images/FUT.jpg" class="img-responsive"></a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="works.html"><img src="../images/BEI.jpg" class="img-responsive"></a>
+        <a href="works.html"><img src="${pageContext.request.contextPath}/images/BEI.jpg" class="img-responsive"></a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="works.html"><img src="../images/BAS.jpg" class="img-responsive"></a>
+        <a href="works.html"><img src="${pageContext.request.contextPath}/images/BAS.jpg" class="img-responsive"></a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="works.html"><img src="../images/VOL.jpg" class="img-responsive"></a>
+        <a href="works.html"><img src="${pageContext.request.contextPath}/images/VOL.jpg" class="img-responsive"></a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="works.html"><img src="../images/RUN.jpg" class="img-responsive"></a>
+        <a href="works.html"><img src="${pageContext.request.contextPath}/images/RUN.jpg" class="img-responsive"></a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 gallery">
-        <a href="works.html"><img src="../images/SKA.jpg" class="img-responsive"></a>
+        <a href="works.html"><img src="${pageContext.request.contextPath}/images/SKA.jpg" class="img-responsive"></a>
       </div>
     </div>
   </div>
@@ -175,12 +124,12 @@
   <!-- / copyrights -->
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/php-mail-form/validate.js"></script>
+  <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/lib/php-mail-form/validate.js"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+  <script src="${pageContext.request.contextPath}/js/main.js"></script>
 
 </body>
 </html>

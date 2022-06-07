@@ -1,6 +1,9 @@
 package Controller;
 
+import com.Dportes.entity.Admin;
 import com.Dportes.entity.Usuario;
+import com.Dportes.service.AdminServiceImpl;
+import com.Dportes.service.IAdminService;
 import com.Dportes.service.IUsuarioService;
 import com.Dportes.service.UsuarioServiceImpl;
 import java.io.IOException;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class GuardarUsuarioServlet extends HttpServlet {
 
     private IUsuarioService service;
+    private IAdminService service2;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,6 +42,9 @@ public class GuardarUsuarioServlet extends HttpServlet {
             case "guardar":
                 guardar(request, response);
                 break;
+            case "validar":
+                Validar(request, response);
+                break;    
         }
 
     }
@@ -63,18 +70,22 @@ public class GuardarUsuarioServlet extends HttpServlet {
             case "guardar":
                 guardar(request, response);
                 break;
+            case "validar":
+                Validar(request, response);
+                break;     
         }
 
     }
 
     private void crear(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println(request.getParameter("Contra"));
         IUsuarioService service = new UsuarioServiceImpl();
         Usuario u = new Usuario();
         BigInteger tel = new BigInteger(request.getParameter("phone"));
         u.setNombre(request.getParameter("Nombre"));
         u.setApellido(request.getParameter("Apellido"));
-        u.setContraseña(request.getParameter("Contraseña"));
+        u.setContraseña(request.getParameter("Contra"));
         u.setTelefono(tel);
         u.setCorreo(request.getParameter("email"));
         u.setDireccion(request.getParameter("Direccion"));
@@ -126,7 +137,7 @@ public class GuardarUsuarioServlet extends HttpServlet {
         BigInteger tel = new BigInteger(request.getParameter("phone"));
         u.setNombre(request.getParameter("Nombre"));
         u.setApellido(request.getParameter("Apellido"));
-        u.setContraseña(request.getParameter("Contraseña"));
+        u.setContraseña(request.getParameter("Contra"));
         u.setTelefono(tel);
         u.setCorreo(request.getParameter("email"));
         u.setDireccion(request.getParameter("Direccion"));
@@ -137,5 +148,42 @@ public class GuardarUsuarioServlet extends HttpServlet {
         List<Usuario> listaUsuario = this.service.obtenerRegistros();
         request.setAttribute("listaUsuario", listaUsuario);
         dispatcher.forward(request, response);
+    }
+
+    private void Validar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int aux=0;
+        String User = request.getParameter("email");
+        String Contra = request.getParameter("Contra");
+        this.service = new UsuarioServiceImpl();
+        this.service2 = new AdminServiceImpl();
+        List<Usuario> listaUsuario = this.service.obtenerRegistros();
+        List<Admin> listaAdmin = this.service2.obtenerRegistros();
+        for (Usuario usuario : listaUsuario) {
+            if (usuario.getCorreo().equals(User)) {
+                for (Usuario usuario2 : listaUsuario) {
+                    if (usuario2.getContraseña().equals(Contra)) {
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/index2.jsp");
+                        dispatcher.forward(request, response);
+                        aux=1;
+                    }
+                }
+            }
+        }
+        for (Admin admin : listaAdmin) {
+            if (admin.getCorreo().equals(User)) {
+                for (Admin admin2 : listaAdmin) {
+                    if (admin2.getContraseña().equals(Contra)) {
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/home.jsp");
+                        dispatcher.forward(request, response);
+                        aux=1;
+                    }
+                }
+            }
+        }
+        if (aux==0){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/IniciarSesion.jsp");
+                        dispatcher.forward(request, response);
+        }
     }
 }

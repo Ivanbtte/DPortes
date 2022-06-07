@@ -1,9 +1,9 @@
-package com.Dportes.model;
+package com.Dportes.service;
 
 import com.Dportes.entity.Admin;
 import java.util.List;
 
-public interface IAdminModel {
+public interface IAdminService {
 
     public void crearRegistro(Admin admin);
 
@@ -14,5 +14,4 @@ public interface IAdminModel {
     public List<Admin> obtenerRegistros();
 
     public Admin obtenerRegistro(int idAdmin);
-
 }
